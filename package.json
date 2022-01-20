@@ -1,27 +1,41 @@
 {
-  "name": "kebla",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Frontity project",
-  "keywords": [
-    "frontity"
-  ],
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
-  },
-  "scripts": {
-    "dev": "frontity dev",
-    "build": "frontity build",
-    "serve": "frontity serve"
-  },
-  "prettier": {},
-  "dependencies": {
-    "frontity": "^1.17.1",
-    "@frontity/core": "^1.14.3",
-    "@frontity/wp-source": "^1.11.7",
-    "@frontity/tiny-router": "^1.4.4",
-    "@frontity/html2react": "^1.7.0",
-    "@frontity/mars-theme": "./packages/mars-theme"
-  }
+	"name": "kebla",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Kalibrr Landing Page",
+	"keywords": [
+		"kalibrr"
+	],
+	"engines": {
+		"node": ">=10.0.0",
+		"npm": ">=6.0.0"
+	},
+	"scripts": {
+		"dev": "frontity dev",
+		"build": "frontity build",
+		"serve": "frontity serve"
+	},
+	"prettier": {
+		"trailingComma": "none",
+		"tabWidth": 8,
+		"semi": true,
+		"singleQuote": true,
+		"useTabs": true
+	},
+	"dependencies": {
+		"@frontity/core": "^1.14.3",
+		"@frontity/html2react": "^1.7.0",
+		"@frontity/tiny-router": "^1.4.4",
+		"@frontity/wp-source": "^1.11.7",
+		"animate.css": "^4.1.1",
+		"axios": "^0.24.0",
+		"frontity": "^1.17.1",
+		"kebla-theme": "file:packages/kebla-theme",
+		"react-calendly": "^2.2.2",
+		"react-custom-scroll": "^4.3.0",
+		"react-datepicker": "^4.5.0",
+		"react-on-screen": "^2.1.1",
+		"react-responsive": "^9.0.0-beta.5",
+		"react-slick": "^0.28.1"
+	}
 }

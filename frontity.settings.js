@@ -1,57 +1,29 @@
 const settings = {
-  "name": "kebla",
-  "state": {
-    "frontity": {
-      "url": "https://test.frontity.org",
-      "title": "Test Frontity Blog",
-      "description": "WordPress installation for Frontity development"
-    }
-  },
-  "packages": [
-    {
-      "name": "@frontity/mars-theme",
-      "state": {
-        "theme": {
-          "menu": [
-            [
-              "Home",
-              "/"
-            ],
-            [
-              "Nature",
-              "/category/nature/"
-            ],
-            [
-              "Travel",
-              "/category/travel/"
-            ],
-            [
-              "Japan",
-              "/tag/japan/"
-            ],
-            [
-              "About Us",
-              "/about-us/"
-            ]
-          ],
-          "featured": {
-            "showOnList": false,
-            "showOnPost": false
-          }
-        }
-      }
-    },
-    {
-      "name": "@frontity/wp-source",
-      "state": {
-        "source": {
-          "url": "https://test.frontity.org"
-        }
-      }
-    },
-    "@frontity/tiny-router",
-    "@frontity/html2react"
-  ]
+	name: 'kebla',
+	state: {
+		frontity: {
+			//url: 'http://kebla.test',
+			url: 'https://kebla-admin.demoapp.xyz',
+			title: 'Kalibrr Landing Page',
+			description: 'Kalibrr Landing Page'
+		}
+	},
+	packages: [
+		{
+			name: 'kebla-theme'
+		},
+		{
+			name: '@frontity/wp-source',
+			state: {
+				source: {
+					//url: 'http://kebla.test',
+					url: 'https://kebla-admin.demoapp.xyz'
+				}
+			}
+		},
+		'@frontity/tiny-router',
+		'@frontity/html2react'
+	]
 };
 
 export default settings;

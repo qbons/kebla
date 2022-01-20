@@ -1,0 +1,13 @@
+{
+	"name": "kebla-theme",
+	"version": "1.0.0",
+	"description": ".",
+	"keywords": [
+		"Kalibrr Landing Page",
+		"kebla-theme"
+	],
+	"license": "Apache-2.0",
+	"dependencies": {
+		"frontity": "^1.17.1"
+	}
+}
