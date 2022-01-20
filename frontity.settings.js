@@ -3,7 +3,7 @@ const settings = {
 	state: {
 		frontity: {
 			//url: 'http://kebla.test',
-			url: 'https://kebla-admin.demoapp.xyz',
+			url: 'https://kebla-admin.demoapp.xyz/employers',
 			title: 'Kalibrr Landing Page',
 			description: 'Kalibrr Landing Page'
 		}
