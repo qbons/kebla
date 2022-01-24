@@ -6,7 +6,6 @@ const settings = {
 			url: '/employers',
 			title: 'Kalibrr Landing Page',
 			description: 'Kalibrr Landing Page'
-
 		}
 	},
 	packages: [
