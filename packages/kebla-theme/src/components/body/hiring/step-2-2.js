@@ -27,7 +27,7 @@ const Step_2_2 = ({ state, actions, libraries }) => {
                         state.theme.hiring.demo = payload;
                         axios.post(state.theme.api + 'submit-demo',  {data: state.theme.hiring, lang: req.option.lang }).then(res => {
                                 state.theme.hiring.demo.date = res.data;
-                                const urlThank = req.option.lang == 'en' ? '/hiring/thank-you-demo' : '/id/hiring/thank-you-demo' ;
+                                const urlThank = req.option.lang == 'en' ? '/employers/hiring/thank-you-demo' : '/employers/id/hiring/thank-you-demo' ;
                                 actions.router.set(urlThank)
                         }); 
                 }); 

@@ -71,13 +71,13 @@ const Step_2 = ({ state,actions, libraries }) => {
                                 state.theme.hiring.monthly =  monthlyPrice;
                                 if(submission){
                                         setLoading(true);
-                                        const url = req.option.lang == 'en' ? '/hiring/order-thank-you' : '/id/hiring/order-thank-you';
+                                        const url = req.option.lang == 'en' ? '/employers/hiring/order-thank-you' : '/employers/id/hiring/order-thank-you';
                                         axios.post(state.theme.api + 'submit-hiring',  {data: state.theme.hiring, lang: req.option.lang }).then(res => {
                                                 setLoading(false);
                                                 actions.router.set(url)
                                         }); 
                                 }else{
-                                        const url = req.option.lang == 'en' ? '/hiring/demo-schedule' : '/id/hiring/demo-schedule';
+                                        const url = req.option.lang == 'en' ? '/employers/hiring/demo-schedule' : '/employers/id/hiring/demo-schedule';
                                         actions.router.set(url);
                                 }
                         }else{
@@ -85,7 +85,7 @@ const Step_2 = ({ state,actions, libraries }) => {
                         }
                 }else{
                         alert(data.general.invalid);
-                        actions.router.set(req.option.lang == 'en' ? '/hiring' : '/id/hiring')
+                        actions.router.set(req.option.lang == 'en' ? '/employers/hiring' : '/employers/id/hiring')
                 }
                 
         }

@@ -31,7 +31,7 @@ const Step_1 = ({ state, libraries, actions }) => {
         }, [req])
 
         function validateData(){
-                const url = req.option.lang == 'en' ? '/hiring/price/' : '/id/hiring/price/';
+                const url = req.option.lang == 'en' ? '/employers/hiring/price/' : '/employers/id/hiring/price/';
                 let valid = true;
                 const fields = [ 'name', 'position', 'email', 'companyName', 'employee' ];
                 fields.map((v, k) => {

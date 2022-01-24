@@ -27,7 +27,7 @@ const Hero = ({ state, libraries,actions }) => {
         function goToHiring(){
                 if(choosed){
                         state.theme.hiring.employee = dropText;
-                        actions.router.set('/hiring')
+                        actions.router.set('/employers/hiring')
                 }
         }
 
