@@ -3,7 +3,7 @@ const KeblaAPI = () => {
         return [
                 {
                         // HOMEPAGE EN
-                        pattern: "/",
+                        pattern: "/employers",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/homepage-en`
@@ -15,7 +15,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HOMEPAGE ID
-                        pattern: "/id",
+                        pattern: "/employers/id",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/homepage-id`
@@ -27,7 +27,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 1 EN
-                        pattern: "/hiring",
+                        pattern: "/employers/hiring",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/en/info`
@@ -39,7 +39,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 1 - 2 EN
-                        pattern: "/hiring/needs",
+                        pattern: "/employers/hiring/needs",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/en/needs`
@@ -51,7 +51,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 2 EN
-                        pattern: "/hiring/price",
+                        pattern: "/employers/hiring/price",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/en/price`
@@ -63,7 +63,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 2 - 2 EN
-                        pattern: "/hiring/demo-schedule",
+                        pattern: "/employers/hiring/demo-schedule",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/en/demo-schedule`
@@ -75,7 +75,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 3 ORDER THAK YOU
-                        pattern: "/hiring/order-thank-you",
+                        pattern: "/employers/hiring/order-thank-you",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/en/order-thank-you`
@@ -87,7 +87,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 3 ORDER THAK YOU
-                        pattern: "/hiring/thank-you-demo",
+                        pattern: "/employers/hiring/thank-you-demo",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/en/thank-you-demo`
@@ -99,7 +99,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 1 ID
-                        pattern: "/id/hiring",
+                        pattern: "/employers/id/hiring",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/id/info`
@@ -111,7 +111,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 1 - 2 ID
-                        pattern: "/id/hiring/needs",
+                        pattern: "/employers/id/hiring/needs",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/id/needs`
@@ -123,7 +123,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 2 ID
-                        pattern: "/id/hiring/price",
+                        pattern: "/employers/id/hiring/price",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/id/price`
@@ -135,7 +135,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 2 - 2 ID
-                        pattern: "/id/hiring/demo-schedule",
+                        pattern: "/employers/id/hiring/demo-schedule",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/id/demo-schedule`
@@ -147,7 +147,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 3 ORDER THAK YOU ID
-                        pattern: "/id/hiring/order-thank-you",
+                        pattern: "/employers/id/hiring/order-thank-you",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/id/order-thank-you`
@@ -159,7 +159,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // HIRING STEP 3 ORDER THAK YOU ID
-                        pattern: "/id/hiring/thank-you-demo",
+                        pattern: "/employers/id/hiring/thank-you-demo",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/hiring/id/thank-you-demo`
@@ -171,7 +171,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // PAGE EN
-                        pattern: "/:slug",
+                        pattern: "/employers/:slug",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/page/${params.slug}`
@@ -183,7 +183,7 @@ const KeblaAPI = () => {
                 }, 
                 {
                         // PAGE ID
-                        pattern: "/id/:slug",
+                        pattern: "/employers/id/:slug",
                         func: async ({ route, params, state, libraries, force }) => {
                                 const response = await libraries.source.api.get({
                                         endpoint: `/kebla/v1/page/id/${params.slug}`
