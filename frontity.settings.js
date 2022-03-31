@@ -26,7 +26,7 @@ const settings = {
 			state: {
 			  	googleTagManagerAnalytics: {
 			    		//containerId: "GTM-N69WSKL",
-					containerId: "G-9WHGEQ5PXT",
+					containerId: "GTM-TV53C4",
 			  	},
 			},
 		},
