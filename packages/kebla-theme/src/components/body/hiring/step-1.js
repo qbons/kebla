@@ -44,6 +44,13 @@ const Step_1 = ({ state, libraries, actions }) => {
                         axios.post(state.theme.api + 'submit-info',  {data: state.theme.hiring, lang: req.option.lang }).then(res => {
                                 setLoading(false);
                                 if(res.data.status == 'ok'){
+                                        actions.analytics.event({
+                                                name: "personal_data_sign_up",
+                                                payload: {
+                                                        category: "form",
+                                                        label: "personal-data-sign-up",
+                                                },
+                                        });
                                         actions.router.set(url)
                                 }else{
                                         setEmailValid(false);

@@ -26,13 +26,6 @@ const Hero = ({ state, libraries,actions }) => {
 
         function goToHiring(){
                 if(choosed){
-                        actions.analytics.event({
-                                name: "click",
-                                payload: {
-                                        category: "button",
-                                        label: "dropdown-hero",
-                                },
-                        });
                         state.theme.hiring.employee = dropText;
                         actions.router.set('/employers/hiring')
                 }
