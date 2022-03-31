@@ -1,5 +1,6 @@
 
 import { connect } from 'frontity';
+import {useEffect} from 'react';
 
 import Link from '@frontity/components/link';
 import Image from "@frontity/components/image";
@@ -9,6 +10,16 @@ const Step_3 = ({ state, libraries }) => {
         const timeline = req.data.timeline;
         const data = req.data.othank;
         const Html2React = libraries.html2react.Component;
+
+        useEffect(() => {
+                actions.analytics.event({
+                        name: "order_thank_you_page",
+                        payload: {
+                                category: "page_view",
+                                label: "order-thank-you-page",
+                        },
+                });
+        }, [req])
 	return (
 		<div className="step-3">
                         <div className="timeline">
