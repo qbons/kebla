@@ -111,6 +111,14 @@ const Step_2 = ({ state,actions, libraries }) => {
         useEffect(() => {
                 setDefaultValue('basic');
                 updateCurrency();
+
+                actions.analytics.event({
+                        name: "pricing_page_visit",
+                        payload: {
+                                category: "page_view",
+                                label: "pricing-page-visit",
+                        },
+                });
         }, [req])
 	return (
 		<div className={`step-2-alt step-2 ${isLoading ? 'fetching' : ''}`}>
