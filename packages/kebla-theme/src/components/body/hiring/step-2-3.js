@@ -5,7 +5,7 @@ import {useEffect} from 'react';
 import Link from '@frontity/components/link';
 import Image from "@frontity/components/image";
 
-const Step_2_3 = ({ state, libraries }) => {
+const Step_2_3 = ({ state,actions, libraries }) => {
         const req = state.source.get(state.router.link);
         const timeline = req.data.timeline;
         const data = req.data.dthank;
