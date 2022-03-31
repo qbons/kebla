@@ -13,7 +13,7 @@ const keblaTheme = {
 			isPopFeatOpen: false,
 			autoPrefetch: 'in-view',
 			//api: 'http://kebla.test/wp-json/kebla/v1/',
-			api: 'https://kebla-admin.demoapp.xyz/wp-json/kebla/v1/',
+			api: 'https://employers.kalibrr.com/wp-json/kebla/v1/',
 			autoPrefetch: 'in-view',
 			hiring: {
 				package: '',

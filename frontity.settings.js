@@ -3,7 +3,7 @@ const settings = {
 	state: {
 		frontity: {
 			//url: 'http://kebla.test',
-			url: '/employers',
+			url: 'https://kebla.demoapp.xyz/employers',
 			title: 'Kalibrr Landing Page',
 			description: 'Kalibrr Landing Page'
 		}
@@ -17,9 +17,17 @@ const settings = {
 			state: {
 				source: {
 					//url: 'http://kebla.test',
-					url: 'https://kebla-admin.demoapp.xyz'
+					url: 'https://employers.kalibrr.com'
 				}
 			}
+		},
+		{
+			name: "@frontity/google-tag-manager-analytics",
+			state: {
+			  	googleTagManagerAnalytics: {
+			    		containerId: "GTM-N69WSKL",
+			  	},
+			},
 		},
 		'@frontity/tiny-router',
 		'@frontity/html2react'

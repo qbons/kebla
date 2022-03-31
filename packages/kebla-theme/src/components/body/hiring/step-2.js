@@ -37,10 +37,10 @@ const Step_2 = ({ state,actions, libraries }) => {
                         state.theme.hiring.currency = 'peso';
                 }else{
                         state.theme.hiring.package = 'custom';
-                        state.theme.hiring.jobs = 1
-                        state.theme.hiring.users = 1
-                        state.theme.hiring.duration = 1
-                        setDuration(1);
+                        state.theme.hiring.jobs = 3;
+                        state.theme.hiring.users = 1;
+                        //state.theme.hiring.duration = 1;
+                        //setDuration(1);
                         state.theme.hiring.currency = '';
                         state.theme.hiring.total = '';
                         state.theme.hiring.monthly = ''
@@ -64,24 +64,31 @@ const Step_2 = ({ state,actions, libraries }) => {
                                 if(state.theme.hiring[v] == '' || state.theme.hiring[v] == 0){
                                         fieldsValid = false;
                                 }
-                        });
-                        if(fieldsValid){
-                                state.theme.hiring.currency = current;
-                                state.theme.hiring.total = totalPrice;
-                                state.theme.hiring.monthly =  monthlyPrice;
-                                if(submission){
-                                        setLoading(true);
-                                        const url = req.option.lang == 'en' ? '/employers/hiring/order-thank-you' : '/employers/id/hiring/order-thank-you';
-                                        axios.post(state.theme.api + 'submit-hiring',  {data: state.theme.hiring, lang: req.option.lang }).then(res => {
-                                                setLoading(false);
-                                                actions.router.set(url)
-                                        }); 
-                                }else{
-                                        const url = req.option.lang == 'en' ? '/employers/hiring/demo-schedule' : '/employers/id/hiring/demo-schedule';
-                                        actions.router.set(url);
+                                if(v == 'jobs' && state.theme.hiring[v] < 3 ){
+                                        fieldsValid = 'min_error';
+                                        req.option.lang == 'en' ? alert("The minimum number of jobs is 3.") : alert("Jumlah minimum pekerjaan adalah 3.");
+                                        return;
                                 }
-                        }else{
-                                alert(data.custom.invalid);
+                        });
+                        if(fieldsValid != 'min_error'){
+                                if(fieldsValid){
+                                        state.theme.hiring.currency = current;
+                                        state.theme.hiring.total = totalPrice;
+                                        state.theme.hiring.monthly =  monthlyPrice;
+                                        if(submission){
+                                                setLoading(true);
+                                                const url = req.option.lang == 'en' ? '/employers/hiring/order-thank-you' : '/employers/id/hiring/order-thank-you';
+                                                axios.post(state.theme.api + 'submit-hiring',  {data: state.theme.hiring, lang: req.option.lang }).then(res => {
+                                                        setLoading(false);
+                                                        actions.router.set(url)
+                                                }); 
+                                        }else{
+                                                const url = req.option.lang == 'en' ? '/employers/hiring/demo-schedule' : '/employers/id/hiring/demo-schedule';
+                                                actions.router.set(url);
+                                        }
+                                }else{
+                                        alert(data.custom.invalid);
+                                }
                         }
                 }else{
                         alert(data.general.invalid);
@@ -90,8 +97,20 @@ const Step_2 = ({ state,actions, libraries }) => {
                 
         }
 
+        function updateCurrency(){
+                axios.get('https://ipapi.co/json/').then((response) => {
+                        let data = response.data;
+                        if(data.country_code == 'ID'){
+                                setCurrent('rupiah');
+                        }
+                }).catch((error) => {
+                        console.log(error);
+                });
+        }
+
         useEffect(() => {
                 setDefaultValue('basic');
+                updateCurrency();
         }, [req])
 	return (
 		<div className={`step-2-alt step-2 ${isLoading ? 'fetching' : ''}`}>
@@ -196,7 +215,7 @@ const Step_2 = ({ state,actions, libraries }) => {
                                                                                         <td><Html2React html={data.field.job}/></td>
                                                                                         <td className="pduration form-basic">
                                                                                                 {/*<Dropselect option={data.custom.job} type={'job'} state={state}/>*/}
-                                                                                                <input type="number" min="1" onChange={(e) => {state.theme.hiring.jobs = e.target.value}} value={state.theme.hiring.jobs} />
+                                                                                                <input type="number" min="3" onChange={(e) => {state.theme.hiring.jobs = e.target.value}} value={state.theme.hiring.jobs} />
                                                                                                 <b>{data.field.jobLabel}</b>
                                                                                         </td>
                                                                                 </tr>
@@ -210,9 +229,10 @@ const Step_2 = ({ state,actions, libraries }) => {
                                                                                 </tr>
                                                                                 <tr>
                                                                                         <td><Html2React html={data.field.duration}/></td>
-                                                                                        <td className="pduration form-basic">
+                                                                                        <td className="pduration">
                                                                                                 {/*<Dropselect option={data.custom.duration} type={'duration'} state={state}/>*/}
-                                                                                                <input type="number" min="1" onChange={(e) => {setDuration(e.target.value)}} value={duration} />
+                                                                                                <Dropselect option={data.basic.durationItem}  state={state} setTotalPrice={setTotalPrice} setMonthlyPrice={setMonthlyPrice} setDuration={setDuration} />
+                                                                                                {/*<input type="number" min="1" onChange={(e) => {setDuration(e.target.value)}} value={duration} />*/}
                                                                                                 <b>{data.field.monthLabel}</b>
                                                                                         </td>
                                                                                 </tr>

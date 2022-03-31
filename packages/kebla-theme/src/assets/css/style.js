@@ -4050,6 +4050,15 @@ body .white-head #top:not(.is-sticky) .logo{
 	.inner-home .resource .slidenav a.next{
 		right: 20px;
 	}
+	.inner-sign .step-2 .hswitch a{
+		width: 34px;
+		height: 34px;
+		line-height: 32px;
+		font-size: 14px;
+	}
+	.inner-sign .step-2 .plang h3{
+		top: 9px;
+	}
 
 	/** FONT SIZE **/
 	
