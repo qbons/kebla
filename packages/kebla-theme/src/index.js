@@ -13,7 +13,8 @@ const keblaTheme = {
 			isPopFeatOpen: false,
 			autoPrefetch: 'in-view',
 			//api: 'http://kebla.test/wp-json/kebla/v1/',
-			api: 'https://employers.kalibrr.com/wp-json/kebla/v1/',
+			api: 'https://kebla-admin.demoapp.xyz/wp-json/kebla/v1/',
+			//api: 'https://employers.kalibrr.com/wp-json/kebla/v1/',
 			autoPrefetch: 'in-view',
 			hiring: {
 				package: '',
@@ -21,6 +22,12 @@ const keblaTheme = {
 				name: '',
 				employee: '',
 				position: '',
+				phone: {
+					name: '',
+					prefix: '+63',
+					number: '',
+					code: 'ph'
+				},
 				companyName: '',
 				jobs: '',
 				users: '',
@@ -52,6 +59,12 @@ const keblaTheme = {
 					name: '',
 					employee: '',
 					position: '',
+					phone: {
+						name: '',
+						prefix: '+63',
+						number: '',
+						code: 'ph'
+					},
 					companyName: '',
 					jobs: '',
 					users: '',

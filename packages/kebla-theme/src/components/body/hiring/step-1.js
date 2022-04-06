@@ -1,6 +1,7 @@
 
 import { connect } from 'frontity';
 import {useState, useEffect} from 'react';
+import CustomScroll from 'react-custom-scroll';
 
 import axios from 'axios';
 
@@ -28,16 +29,26 @@ const Step_1 = ({ state, libraries, actions }) => {
                 setDropText(state.theme.hiring.employee != '' ? state.theme.hiring.employee : req.data.info.company.sizePlace);
                 setDropOpen(false);
                 setDropActivated(state.theme.hiring.employee != '' ? true : false);
+
+
+                getCountryByIp();
         }, [req])
 
         function validateData(){
                 const url = req.option.lang == 'en' ? '/employers/hiring/price/' : '/employers/id/hiring/price/';
                 let valid = true;
-                const fields = [ 'name', 'position', 'email', 'companyName', 'employee' ];
+                const fields = [ 'name', 'position', 'email', 'phone', 'companyName', 'employee' ];
                 fields.map((v, k) => {
-                        if(state.theme.hiring[v] == ''){
-                                valid = false;
+                        if(v != 'phone'){
+                                if(state.theme.hiring[v] == ''){
+                                        valid = false;
+                                }
+                        }else{
+                                if(state.theme.hiring.phone.number == ''){
+                                        valid = false;
+                                }
                         }
+                        
                 });
                 if(valid){
                         setLoading(true);
@@ -60,6 +71,35 @@ const Step_1 = ({ state, libraries, actions }) => {
                 }else{
                         alert(data.form.invalid);
                 }
+        }
+        
+        const [phoneOpen, setPhoneOpen] = useState(false);
+        const [phoneCountry, setPhoneCountry] = useState(state.theme.hiring.phone);
+        const [phoneFetched, setPhoneFetched] = useState(true);
+        const [phoneActivated, setPhoneActivated] = useState(false);
+
+        function updatePhoneCountry(item){
+                setPhoneCountry(item);
+                setPhoneOpen(false);
+                state.theme.hiring.phone.prefix = item.prefix;
+                state.theme.hiring.phone.code = item.code;
+                state.theme.hiring.phone.name = item.name;
+        }
+
+        function getCountryByIp(){
+                axios.get('https://ipapi.co/json/').then((response) => {
+                        let data = response.data;
+                        setPhoneCountry({
+                                prefix: data.country_calling_code,
+                                code: data.country
+                        });
+                        setPhoneFetched(false);
+                        state.theme.hiring.phone.prefix = data.country_calling_code;
+                        state.theme.hiring.phone.code = data.country;
+                        state.theme.hiring.phone.name = data.country_name;
+                }).catch((error) => {
+                        console.log(error);
+                });
         }
 
 	return (
@@ -111,6 +151,32 @@ const Step_1 = ({ state, libraries, actions }) => {
                                                         <div className="fgroup">
                                                                 {data.basic.position != '' && <label>{data.basic.position}</label>}
                                                                 <input type="text" onChange={(e) => {state.theme.hiring.position = e.target.value}} value={state.theme.hiring.position} />
+                                                        </div>
+                                                        <div className="fgroup">
+                                                                {data.basic.phone != '' && <label>{data.basic.phone}</label>}
+                                                                <div className="phone-field clearfix">
+                                                                        <div className={`drop ${phoneFetched ? 'fetching' : ''}`}>
+                                                                                <span className={`cvr-bg-af ${phoneOpen ? 'clicked' : ''} `} onClick={() => { setPhoneOpen(!phoneOpen);setPhoneActivated(true)}}>
+                                                                                        <img src={`https://countryflagsapi.com/svg/${phoneCountry.code}`} width="36"/>
+                                                                                        <b>{phoneCountry.prefix}</b>
+                                                                                </span>
+                                                                                <div className="holder">
+                                                                                        <CustomScroll heightRelativeToParent="100px">
+                                                                                                <ul>
+                                                                                                        {data.basic.country.map((item, index) => {
+                                                                                                                return(
+                                                                                                                        <li key={index} onClick={() => updatePhoneCountry(item)}>
+                                                                                                                                {phoneActivated && <img src={`https://countryflagsapi.com/svg/${item.code}`} width="25" height="17" />}
+                                                                                                                                <b>{item.prefix}</b>
+                                                                                                                        </li>
+                                                                                                                )
+                                                                                                        })}
+                                                                                                </ul>
+                                                                                        </CustomScroll>
+                                                                                </div>
+                                                                        </div>
+                                                                        <input type="tel" value={state.theme.hiring.phone.number} onChange={(e) => {state.theme.hiring.phone.number = e.target.value}} placeholder={req.option.lang == 'en' ? 'Phone Number' : 'Nomor telepon'} />
+                                                                </div>
                                                         </div>
                                                 </div>
                                         </div>

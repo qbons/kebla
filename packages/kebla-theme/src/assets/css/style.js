@@ -1789,6 +1789,7 @@ body .white-head #top:not(.is-sticky) .logo{
         color: #CED9EA;
 }
 .inner-sign  .dropselect strong,
+.inner-sign .form-basic input[type='tel'],
 .inner-sign .form-basic input[type='number'],
 .inner-sign .form-basic input[type='email'],
 .inner-sign .form-basic input[type='text']{
@@ -1958,6 +1959,105 @@ body .white-head #top:not(.is-sticky) .logo{
 .inner-sign .step-1-2 .action .copy a{
         color: #0086FF;
         text-decoration: underline;
+}
+.phone-field .drop{
+	float: left;
+	width: 104px;
+	position: relative;
+}
+.phone-field .drop.fetching:after{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background: rgba(255,255,255,.7);
+	content: '';
+}
+.phone-field .drop span{
+	display: block;
+	border-radius: 5px;
+	display: block;
+	width: 100%;
+	background: #fff;
+	color: #000;
+	border: solid 1px #CED9EA;
+	font-size: 16px;
+	font-family: 'DM Sans';
+	font-weight: 400;
+	height: 32px;
+	line-height: 28px;
+	padding: 0 6px;
+	cursor: pointer;
+	position: relative;
+}
+.phone-field .drop span:after{
+	width: 10px;
+        height: 6px;
+        background-image: url('${ArrowSelect}');
+        right: 8px;
+        top: 12px;
+	position: absolute;
+	transform: rotate(odeg);
+	transition:transform 0.2s ease-in;
+}
+.phone-field .drop span.clicked:after{
+	transform: rotate(180deg);
+}
+.phone-field .drop .holder li > *,
+.phone-field .drop span > *{
+	display: inline-block;
+	vertical-align: middle;
+}
+.phone-field .drop span b{
+	margin-left: 6px;
+}
+.phone-field .drop .holder{
+	display: block;
+	position: absolute;
+	left: 0;
+	border-radius: 5px;
+	width: 100%;
+	background: #fff;
+	border: solid 1px #CED9EA;
+	margin: 8px 0 0;
+	overflow: hidden;
+	transition:all 0.2s ease-in;
+	opacity: 0;
+	visibility: hidden;
+}
+.phone-field .drop span.clicked + .holder{
+	opacity: 1;
+	visibility: visible;
+	margin: 5px 0 0;
+}
+.phone-field .drop .holder li{
+	padding: 6px;
+	cursor: pointer;
+	font-size: 14px;
+	color: #000;
+	background: #fff;
+	transition:all 0.2s ease-in;
+}
+.phone-field .drop .holder li b{
+	margin-left: 5px;
+}
+.phone-field .drop .holder li:nth-child(odd){
+	background: rgba(240, 243, 247, 0.5);
+}
+.phone-field .drop .holder li:hover,
+.phone-field .drop .holder li:nth-child(odd):hover{
+	color: #fff;
+	background: #0086FF;
+}
+.phone-field .drop img{
+	border: 1px solid #ced9ea;
+}
+.phone-field input[type='tel']{
+	width: calc(100% - 113px);
+	float: right;	
 }
 #popfeat{
         height: 100vh;
@@ -3793,6 +3893,7 @@ body .white-head #top:not(.is-sticky) .logo{
 		max-width: 330px;
 		margin: 30px auto 0;
 	}
+	/**
 	.inner-sign .step-1 .panel:first-child .col:first-child .fgroup:nth-child(2){
 		position: relative;
 		top: 70px;
@@ -3801,6 +3902,7 @@ body .white-head #top:not(.is-sticky) .logo{
 		position: relative;
 		top: -65px;
 	}
+	**/
 	.inner-sign .step-1-2 figure{
 		max-width: 290px;
 		margin: 0 auto 15px;

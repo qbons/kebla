@@ -2,8 +2,8 @@ const settings = {
 	name: 'kebla',
 	state: {
 		frontity: {
-			//url: 'http://kebla.test',
-			url: 'https://kebla.vercel.app',
+			url: 'http://kebla.test',
+			//url: 'https://kebla.vercel.app',
 			title: 'Kalibrr Landing Page',
 			description: 'Kalibrr Landing Page'
 		}
@@ -17,7 +17,8 @@ const settings = {
 			state: {
 				source: {
 					//url: 'http://kebla.test',
-					url: 'https://employers.kalibrr.com'
+					url: 'https://kebla-admin.demoapp.xyz',
+					//url: 'https://employers.kalibrr.com'
 				}
 			}
 		},
@@ -25,8 +26,8 @@ const settings = {
 			name: "@frontity/google-tag-manager-analytics",
 			state: {
 			  	googleTagManagerAnalytics: {
-			    		//containerId: "GTM-N69WSKL",
-					containerId: "GTM-TV53C4",
+			    		containerId: "GTM-N69WSKL",
+					//containerId: "GTM-TV53C4",
 			  	},
 			},
 		},
