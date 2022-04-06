@@ -4,6 +4,7 @@ import Switch from '@frontity/components/switch';
 
 import Hero from './hero';
 import Client from './client';
+import Video from './video';
 import Help from './help';
 import Reason from './reason';
 import Process from './process';
@@ -21,6 +22,7 @@ const Home = ({ state, libraries}) => {
                                         <Switch key={k}>
                                                 <Hero when={v == 'hero' && visibility.includes(v)}/>
                                                 <Client when={v == 'client' && visibility.includes(v)}/>
+                                                <Video when={v == 'video' && visibility.includes(v)}/>
                                                 <Help when={v == 'help' && visibility.includes(v)}/>
                                                 <Reason when={v == 'reason' && visibility.includes(v)}/>
                                                 <Process when={v == 'process' && visibility.includes(v)}/>

@@ -17,6 +17,7 @@ import Clock from '../img/icon/clock.png';
 import ArrowFeat from '../img/icon/arrow-feat.svg';
 import Globe from '../img/icon/globe.png';
 import Pointing from '../img/icon/pointing.svg';
+import Play from '../img/icon/play.svg';
 
 const Style = `
 @charset "UTF-8";
@@ -1159,6 +1160,57 @@ body .white-head #top:not(.is-sticky) .logo{
         font-size: 48px;
         font-weight: 700;
         margin-bottom: 30px;
+}
+.inner-home .video{
+	text-align: center;
+	margin: 60px 0 0;
+}
+.inner-home .video h2{
+	color: #000;
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 130%;
+	margin: 0 0 20px;
+}
+.inner-home .video .button{
+	width: 100%;
+	max-width: 400px;
+}
+.inner-home .video .holder{
+	margin: 0 0 25px;	
+}
+.inner-home .video .holder a{
+	display: block;
+	position: relative;
+}
+.inner-home .video .holder a:after{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background: rgba(0,0,0,.2);
+	content: '';
+}
+.inner-home .video .holder span{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 100%;
+	text-align: center;
+	z-index: 2;
+}
+.inner-home .video .holder i{
+	background-image: url('${Play}');
+	width: 177px;
+	height: 177px;
+	display: inline-block;
 }
 /** SME **/
 .inner-sme .hero{
@@ -4161,12 +4213,17 @@ body .white-head #top:not(.is-sticky) .logo{
 	.inner-sign .step-2 .plang h3{
 		top: 9px;
 	}
+	.inner-home .video .holder i{
+		width: 80px;
+		height: 80px;
+	}
 
 	/** FONT SIZE **/
 	
 	.inner-home .cta h2{
 	       font-size: 36px;
 	}
+	.inner-home .video h2,
 	.inner-page .wrapper > h1,
 	.inner-sign .step-2 .plang strong,
 	.inner-corp .faq .hentry h2,
