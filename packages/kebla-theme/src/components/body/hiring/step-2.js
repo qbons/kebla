@@ -275,8 +275,11 @@ const Step_2 = ({ state,actions, libraries }) => {
                         <div className="action clearfix">
                                 {data.general.back != '' && <Link link={`${req.option.lang == 'en' ? '' : '/id' }/hiring/`} className="goback">&lt; {data.general.back}</Link>}
                                 <div className="list-btn">
+                                        {/*
                                         {data.general.request != '' && <a href="#" className="button btn-hollow" onClick={(e) =>{ e.preventDefault(); submitData(false)}}>{data.general.request}</a>}
                                         {data.general.order != '' && <a href="#" className="button" onClick={(e) =>{e.preventDefault(); submitData(true)}}>{data.general.order}</a>}
+                                        */}
+                                        {data.general.request != '' && <a href="#" className="button" onClick={(e) =>{ e.preventDefault(); submitData(false)}}>{data.general.request}</a>}
                                 </div>
                         </div>
                 </div>

@@ -1,6 +1,6 @@
 
 import { connect } from 'frontity';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InlineWidget, CalendlyEventListener } from "react-calendly";
 
 import axios from 'axios';
@@ -30,9 +30,20 @@ const Step_2_2 = ({ state, actions, libraries }) => {
                                 const urlThank = req.option.lang == 'en' ? '/employers/hiring/thank-you-demo' : '/employers/id/hiring/thank-you-demo' ;
                                 actions.router.set(urlThank)
                         }); 
-                }); 
-                
+                });        
         }
+
+        const [calendlyLink, setCalendyLink] = useState('nope');
+
+        useEffect(() => {
+                axios.get('https://ipapi.co/json/').then((response) => {
+                        let resp = response.data;
+                        setCalendyLink(resp.country == 'ID'  ? data.general.link_id : data.general.link_ph);
+                }).catch((error) => {
+                        console.log(error);
+                });
+        }, [req])
+
 	return (
 		<div className={`step-2-2 ${isLoading ? 'fetching' : ''}`}>
                         {data.general.back != '' && <Link link={`${req.option.lang == 'en' ? '' : '/id' }/hiring/price`} className="goback for-mobile">&lt; {data.general.back}</Link>}
@@ -64,25 +75,29 @@ const Step_2_2 = ({ state, actions, libraries }) => {
                                         </div>
                                 }
                         </div>
-                        <InlineWidget 
-                                url={data.general.link}
-                                styles={{
-                                        height: '700px'
-                                }}
-                                pageSettings={{
-                                        
-                                }}
-                                prefill={{
-                                        email: state.theme.hiring.email,
-                                        name: state.theme.hiring.name,
-                                        customAnswers: {
-                                                a1: state.theme.hiring.position,
-                                                a2: state.theme.hiring.companyName,
-                                                a3: state.theme.hiring.employee
-                                        },
-                                }}
-                         />
-                         <CalendlyEventListener onEventScheduled={onEventScheduled} />
+                        {calendlyLink != 'nope' && 
+                                <>
+                                        <InlineWidget 
+                                                url={calendlyLink}
+                                                styles={{
+                                                        height: '700px'
+                                                }}
+                                                pageSettings={{
+                                                        
+                                                }}
+                                                prefill={{
+                                                        email: state.theme.hiring.email,
+                                                        name: state.theme.hiring.name,
+                                                        customAnswers: {
+                                                                a1: state.theme.hiring.position,
+                                                                a2: state.theme.hiring.companyName,
+                                                                a3: state.theme.hiring.employee
+                                                        },
+                                                }}
+                                        />
+                                        <CalendlyEventListener onEventScheduled={onEventScheduled} />
+                                </>
+                        }
                         <div className="action clearfix">
                                 {data.general.back != '' && <Link link={`${req.option.lang == 'en' ? '' : '/id' }/hiring/price`} className="goback">&lt; {data.general.back}</Link>}
                                 {(false && data.general.button != '') && <Link link={`${req.option.lang == 'en' ? '' : '/id' }/hiring/thank-you-demo`} className="button">{data.general.button}</Link>}
