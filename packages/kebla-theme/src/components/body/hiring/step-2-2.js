@@ -15,11 +15,13 @@ const Step_2_2 = ({ state, actions, libraries }) => {
         const data = req.data.demo;
         const Html2React = libraries.html2react.Component;
         const [isLoading, setLoading] = useState(false);
+        const [calendlyLink, setCalendyLink] = useState('nope');
+        const [calendlyToken, setCalendyToken] = useState('nope');
         
         function onEventScheduled(props){
                 setLoading(true);
                 const uri = props.data.payload.event.uri;
-                axios.get(uri,  { headers: {"Authorization" : `Bearer ${data.general.token}`} } ).then(res => {
+                axios.get(uri,  { headers: {"Authorization" : `Bearer ${calendlyToken}`} } ).then(res => {
                         const payload = {
                                 start: res.data.resource.start_time,
                                 end: res.data.resource.end_time
@@ -33,12 +35,12 @@ const Step_2_2 = ({ state, actions, libraries }) => {
                 });        
         }
 
-        const [calendlyLink, setCalendyLink] = useState('nope');
 
         useEffect(() => {
                 axios.get('https://ipapi.co/json/').then((response) => {
                         let resp = response.data;
                         setCalendyLink(resp.country == 'ID'  ? data.general.link_id : data.general.link_ph);
+                        setCalendyToken(resp.country == 'ID'  ? data.general.token_id : data.general.token_ph);
                 }).catch((error) => {
                         console.log(error);
                 });
