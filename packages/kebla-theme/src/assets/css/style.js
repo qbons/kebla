@@ -12,12 +12,16 @@ import ArrowSelect from '../img/icon/arrow-select.svg';
 import Unchecked from '../img/icon/unchecked.svg';
 import Checked from '../img/icon/checked.svg';
 import Info from '../img/icon/info.svg';
+import Info2 from '../img/icon/info2.svg';
 import CheckFeat from '../img/icon/check-feat.svg';
 import Clock from '../img/icon/clock.png';
 import ArrowFeat from '../img/icon/arrow-feat.svg';
 import Globe from '../img/icon/globe.png';
 import Pointing from '../img/icon/pointing.svg';
 import Play from '../img/icon/play.svg';
+import Checklist from '../img/icon/checklist.svg';
+import Checklisted from '../img/icon/checklisted.svg';
+import Close from '../img/icon/close.svg';
 
 const Style = `
 @charset "UTF-8";
@@ -111,6 +115,14 @@ body{
 	font-weight: 400;
 	height: 43px;
 	padding: 0 15px;
+}
+.form-basic input[type="number"]:focus,
+.form-basic input[type="text"]:focus,
+.form-basic input[type="tel"]:focus,
+.form-basic input[type="email"]:focus,
+.form-basic input[type="password"]:focus,
+.form-basic textarea:focus{
+	border-color: #0076DE;
 }
 .form-basic textarea{
 	min-height: 160px;
@@ -1862,6 +1874,88 @@ body .white-head #top:not(.is-sticky) .logo{
         right: 7px;
         top: 12px;
 }
+.inner-sign .step-1 .panel .txt{
+	line-height: 160%;
+	margin: 0 0 13px;
+	position: relative;
+	top: -8px;
+}
+.inner-sign .step-1 .panel .txt i,
+.inner-sign .step-1 .panel .txt em{
+	font-style: italic;
+	color: #677793;
+}
+.inner-sign .step-1 .checklist{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.inner-sign .step-1 .checklist label input[type="checkbox"]{
+	display: none;
+}
+.inner-sign .step-1 .checklist .item{
+	flex: 23%;
+	max-width: 23%;
+	margin: 0 0 25px;
+}
+.inner-sign .step-1 .checklist .item:nth-child(3n + 3){
+	flex: 45%;
+	max-width: 45%;
+}
+.inner-sign .step-1 .checklist label{
+	cursor: pointer;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+	display: inline-block;
+	vertical-align: middle;
+}
+.inner-sign .step-1 .checklist span{
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	color: #000;
+	padding-left: 29px;
+}
+.inner-sign .step-1 .checklist span:before{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 1px;
+	width: 18px;
+	height: 18px;
+	content: '';
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-attachment: scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-image: url('${Checklist}');
+}
+.inner-sign .step-1 .checklist input:checked + span:before{
+	background-image: url('${Checklisted}');
+}
+.inner-sign .step-1 .checklist i{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 8px;
+	background-image: url('${Info2}');
+	width: 11px;
+	height: 13px;
+	position: relative;
+	top: 2px;
+	cursor: pointer;
+}
+.inner-sign .form-basic .checklist input[type="text"]{
+	display: inline-block;
+	vertical-align: middle;
+	width: calc(100% - 100px);
+	margin-left: 10px;
+	max-width: 260px;
+}
 .inner-sign .step-1 .action{
         text-align: center;
         margin-top: 30px;
@@ -2865,6 +2959,75 @@ body .white-head #top:not(.is-sticky) .logo{
 :root {
 	--animate-delay: 0.4s;
 }
+#popcheck{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	background: rgba(0,0,0,0.5);
+	display : flex;
+	align-items: center;
+	justify-content: center;
+}
+#popcheck .holder{
+	background: #fff;
+	border-radius: 8px;
+	padding: 15px 20px 20px;
+	flex: 90%;
+	max-width: 600px;
+	position: relative;
+}
+#popcheck .holder h2{
+	color: #000;
+	font-family: 'Roboto';
+	font-weight: 700;
+	line-height: 130%;
+	margin: 0 0 5px;
+	font-size: 24px;
+}
+#popcheck .holder .format-text{
+	color: #677793;
+	line-height: 140%;
+}
+#popcheck .holder .format-text ul{
+	display: flex;
+	max-width: 90%;
+	margin:30px auto 0;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+#popcheck .holder .format-text li{
+	flex: 40%;
+	max-width: 40%;
+	padding: 0;
+}
+#popcheck .rightned{
+	padding: 18px 0 0;
+	margin: 20px 0 0;
+	border-top: 1px solid #EFEFEF;	
+}
+#popcheck .cls{
+	font-family: 'Roboto';
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 0.15px;
+	position: absolute;
+	right: 0;
+	top: -25px;
+	color: #fff;
+}
+#popcheck .cls:before{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-image: url('${Close}');
+	vertical-align: middle;
+	posisiton: relative;
+	margin: 0 5px 0 0;
+}
 /* MEDIA QUERY FOR WEBKIT BASED BROWSER **/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 
@@ -3351,6 +3514,11 @@ body .white-head #top:not(.is-sticky) .logo{
 	}
 	body.open-menu .white-head #top:not(.is-sticky) .logo{
 		filter: none;
+	}
+	.inner-sign .step-1 .checklist .item:nth-child(3n+3),
+	.inner-sign .step-1 .checklist .item{
+		flex: 45%;
+		max-width: 45%;
 	}
 }
 @media only screen and (min-width: 769px) and (max-width: 991px)  {
@@ -4217,6 +4385,24 @@ body .white-head #top:not(.is-sticky) .logo{
 		width: 80px;
 		height: 80px;
 	}
+	.inner-sign .step-1 .checklist .item:nth-child(3n+3),
+	.inner-sign .step-1 .checklist .item{
+		flex: 100%;
+		max-width: 100%;
+	}
+	#popcheck{
+		padding: 0 20px;
+	}
+	#popcheck .holder .format-text ul{
+		max-width: 100%;
+		padding-left: 20px;
+	}
+	#popcheck .holder .format-text li{
+		flex: 100%;
+		max-width: 100%;
+		padding-bottom: 5px;
+	}
+
 
 	/** FONT SIZE **/
 	
@@ -4241,6 +4427,7 @@ body .white-head #top:not(.is-sticky) .logo{
 	.inner-home .hero h2{
 		font-size: 28px;
 	}
+	#popcheck .holder h2,
 	.inner-sign .tabby .titem>h3,
 	.inner-sign .step-3 .hentry h2,
 	.inner-sign .step-2-2 .hentry h2,

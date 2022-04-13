@@ -26,8 +26,8 @@ const settings = {
 			name: "@frontity/google-tag-manager-analytics",
 			state: {
 			  	googleTagManagerAnalytics: {
-			    		containerId: "GTM-N69WSKL",
-					//containerId: "GTM-TV53C4",
+			    		//containerId: "GTM-N69WSKL",
+					containerId: "GTM-TV53C4",
 			  	},
 			},
 		},
