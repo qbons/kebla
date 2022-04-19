@@ -1945,9 +1945,9 @@ body .white-head #top:not(.is-sticky) .logo{
 	background-image: url('${Info2}');
 	width: 11px;
 	height: 13px;
-	position: relative;
-	top: 2px;
 	cursor: pointer;
+	position: relative;
+	top: -1px;
 }
 .inner-sign .form-basic .checklist input[type="text"]{
 	display: inline-block;

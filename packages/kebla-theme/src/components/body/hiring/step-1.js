@@ -249,17 +249,19 @@ const Step_1 = ({ state, libraries, actions }) => {
                                                                                 <div key={index} className="item">
                                                                                         <label>
                                                                                                 <input type="checkbox" onChange={(e) => updateHiringNeeds(e,item.label)} />
-                                                                                                <span>{item.label}</span>
+                                                                                                <span>
+                                                                                                        {item.label}
+                                                                                                                {item.info != '' &&
+                                                                                                                <i className="cvr-bg" onClick={() => {
+                                                                                                                        setPopcheckOpen(true);
+                                                                                                                        setPopcheckContent({
+                                                                                                                                title: item.label,
+                                                                                                                                text: item.info
+                                                                                                                        });
+                                                                                                                }}></i>
+                                                                                                        }
+                                                                                                </span>
                                                                                         </label>
-                                                                                        {item.info != '' &&
-                                                                                                <i className="cvr-bg" onClick={() => {
-                                                                                                        setPopcheckOpen(true);
-                                                                                                        setPopcheckContent({
-                                                                                                                title: item.label,
-                                                                                                                text: item.info
-                                                                                                        });
-                                                                                                }}></i>
-                                                                                        }
                                                                                 </div>
                                                                         )
                                                                 })}
