@@ -35,7 +35,8 @@ const keblaTheme = {
 				currency: '',
 				total: '',
 				monthly: '',
-				needs: []
+				needs: [],
+				features: []
 			}
 		},
 	},
@@ -73,7 +74,8 @@ const keblaTheme = {
 					currency: '',
 					total: '',
 					monthly: '',
-					needs: []
+					needs: [],
+					features: []
 				}
 			}
 		},

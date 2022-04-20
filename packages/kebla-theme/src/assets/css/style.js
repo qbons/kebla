@@ -22,6 +22,8 @@ import Play from '../img/icon/play.svg';
 import Checklist from '../img/icon/checklist.svg';
 import Checklisted from '../img/icon/checklisted.svg';
 import Close from '../img/icon/close.svg';
+import Checkbox from '../img/icon/checkbox.png';
+import Checkedbox from '../img/icon/checkedbox.png';
 
 const Style = `
 @charset "UTF-8";
@@ -1191,10 +1193,12 @@ body .white-head #top:not(.is-sticky) .logo{
 .inner-home .video .holder{
 	margin: 0 0 25px;	
 }
+.inner-sign .package .video a,
 .inner-home .video .holder a{
 	display: block;
 	position: relative;
 }
+.inner-sign .package .video a:after,
 .inner-home .video .holder a:after{
 	display: block;
 	position: absolute;
@@ -1206,6 +1210,7 @@ body .white-head #top:not(.is-sticky) .logo{
 	background: rgba(0,0,0,.2);
 	content: '';
 }
+.inner-sign .package .video a span,
 .inner-home .video .holder span{
 	display: block;
 	position: absolute;
@@ -1218,11 +1223,16 @@ body .white-head #top:not(.is-sticky) .logo{
 	text-align: center;
 	z-index: 2;
 }
+.inner-sign .package .video a i,
 .inner-home .video .holder i{
 	background-image: url('${Play}');
 	width: 177px;
 	height: 177px;
 	display: inline-block;
+}
+.inner-sign .package .video a i{
+	width: 113px;
+	height: 113px;
 }
 /** SME **/
 .inner-sme .hero{
@@ -2635,6 +2645,127 @@ body .white-head #top:not(.is-sticky) .logo{
 	color: #0086FF;
 	text-decoration: underline;
 }
+.inner-sign .package .feats{
+	margin: 0 0 19px;
+	padding: 20px 0 0;
+	border-top: 1px solid #CED9EA;
+}
+#pcustom .copy{
+	line-height: 160%;
+	color: #0A1126;
+	font-size: 16px;
+	margin: 0 0 20px;
+}
+#pcustom .copy b,
+#pcustom .copy strong{
+	font-weight: 700;
+}
+.inner-sign .package .feats li{
+	display: block;
+	margin: 20px 0 0;
+	line-height: 160%;
+}
+.inner-sign .package .feats li:first-child{
+	margin: 0;
+}
+.inner-sign .package .feats label{
+	cursor: pointer;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+.inner-sign .package .feats label input{
+	display: none;
+}
+.inner-sign .package .feats label span{
+	display: inline-block;
+	padding-left: 30px;
+	position: relative;
+	color: #000;
+	font-size: 16px;
+	transition:color 0.2s ease-in;
+}
+.inner-sign .package .feats li:first-child label input:checked + span,
+.inner-sign .package .feats label span:hover{
+	color:#0086FF;
+}
+.inner-sign .package .feats li:first-child label input:checked + span{
+	font-weight: 700;
+}
+.inner-sign .package .feats label span:before{
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-attachment: scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 3px;
+	width: 19px;
+	height: 19px;
+	background-image: url('${Checkbox}');
+	content: '';
+}
+.inner-sign .package .feats label input:checked + span:before{
+	background-image: url('${Checkedbox}');
+}
+.inner-sign .package .feats label span i{
+	display: inline-block;
+	vertical-align: middle;
+	width: 11px;
+	height: 13px;
+	background-image: url('${Info2}');
+	position: relative;
+	margin-left: 7px;
+}
+.inner-sign .package .feats li .hvr{
+	display: none;
+	position: absolute;
+	background: #FFF9C8;
+	border-radius: 5px;
+	padding: 7px 8px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 140%;
+	width: 235px;
+	color: #000;
+	font-weight: 400;
+	z-index: 10;
+	top: 25px;
+	left: -117px;
+}
+.inner-sign .package .feats li .hvr:after,
+.inner-sign .package .feats li .hvr:before{
+	display: block;
+	position: absolute;
+	content: '';
+}
+.inner-sign .package .feats li .hvr:before{
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 3.5px 8px 3.5px;
+	border-color: transparent transparent #FFF9C8 transparent;
+	top: -8px;
+	left: 50%;
+}
+.inner-sign .package .feats li .hvr:after{
+	height:20px;
+	top: -20px;
+	width: 100%;
+	left: 0;
+}
+.inner-sign .package .feats li span i:hover .hvr{
+	display: block;
+}
+.inner-sign .package .video{
+	margin: 20px 0 0;
+}
 .inner-sign .package .annon{
 	position: relative;
 	padding: 27px 31px 27px 62px;
@@ -3525,6 +3656,7 @@ body .white-head #top:not(.is-sticky) .logo{
 
 }
 @media (max-width: 768px) {
+	.inner-sign .package .disclaim,
 	.inner-sign .package .disclaim p small,
 	.inner-sign .step-3 .hentry h2 br,
 	.inner-sign .step-2-2 .action .goback,

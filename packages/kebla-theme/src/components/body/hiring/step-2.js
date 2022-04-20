@@ -4,7 +4,9 @@ import {useState, useEffect} from 'react';
 
 import axios from 'axios';
 
+import Fancybox from './fancybox';
 import Link from '@frontity/components/link';
+import Image from "@frontity/components/image";
 
 import Step_1_2_Table from './step-1-2-table';
 import Dropselect from './dropselect';
@@ -70,6 +72,7 @@ const Step_2 = ({ state,actions, libraries }) => {
                                         return;
                                 }
                         });
+                        state.theme.hiring.features = itemChecked; //PREMIUM FEATURE
                         if(fieldsValid != 'min_error'){
                                 if(fieldsValid){
                                         state.theme.hiring.currency = current;
@@ -120,6 +123,61 @@ const Step_2 = ({ state,actions, libraries }) => {
                         },
                 });
         }, [req])
+
+        const [allChecked, setAllChecked] = useState(true);
+        const [itemChecked, setItemChecked] = useState([]);
+
+        function checkAll(){
+                if(allChecked){
+                        setItemChecked([]);
+                        setAllChecked(false);
+                }else{
+                        if(data.custom.citem.length > 0){
+                                let checked = [];
+                                data.custom.citem.map((v, k) => {
+                                        checked.push(v.label);
+                                });
+                                setItemChecked(checked);
+                                setAllChecked(true);
+                        }else{
+                                setItemChecked([]);
+                                setAllChecked(false);
+                        }
+                }
+        }
+
+        function updateCheck(e,label){
+                if(e.target.checked){
+                        itemChecked.push(label);
+                        setItemChecked(itemChecked);
+                        if(itemChecked.length == data.custom.citem.length){
+                                setAllChecked(true);
+                        }
+                }else{
+                        if(itemChecked.length > 0){
+                                let newCheck = [];
+                                itemChecked.map((v,k) => {
+                                        if(v != label){
+                                                newCheck.push(v);
+                                        }
+                                });
+                                setItemChecked(newCheck);
+                                setAllChecked(false);
+                        }
+                }
+        }
+
+        useEffect(() => {
+                if(data.custom.citem.length > 0){
+                        let checked = [];
+                        data.custom.citem.map((v, k) => {
+                                checked.push(v.label);
+                        });
+                        setItemChecked(checked);
+                        setAllChecked(true);
+                }
+        }, [req])
+
 	return (
 		<div className={`step-2-alt step-2 ${isLoading ? 'fetching' : ''}`}>
                         {data.general.back != '' && <Link link={`${req.option.lang == 'en' ? '' : '/id' }/hiring/`} className="goback for-mobile">&lt; {data.general.back}</Link>}
@@ -214,7 +272,7 @@ const Step_2 = ({ state,actions, libraries }) => {
                                                 </div>
                                         </div>
                                         <div id="pcustom" className={`titem ${tab != 'basic' ? 'active' : ''}`}>
-                                                <h3>{data.basic.title != '' ? data.basic.title : 'Kalibrr Customized Package'}</h3>
+                                                <h3>{data.custom.title != '' ? data.custom.title : 'Kalibrr Customized Package'}</h3>
                                                 <div className="gap">
                                                         <section>
                                                                 <table>
@@ -246,6 +304,45 @@ const Step_2 = ({ state,actions, libraries }) => {
                                                                                 </tr>
                                                                         </tbody>
                                                                 </table>
+                                                                <div className="feats">
+                                                                        {data.custom.ctext != '' &&
+                                                                                <div className="copy">
+                                                                                        <Html2React html={data.custom.ctext}/>
+                                                                                </div>
+                                                                        }
+                                                                        {data.custom.citem.length > 0 &&
+                                                                                <ul>
+                                                                                        <li>
+                                                                                                <label>
+                                                                                                        {itemChecked.length == data.custom.citem.length 
+                                                                                                                ? <input type="checkbox" name="feat" checked="checked"  onChange={() => checkAll()} />
+                                                                                                                : <input type="checkbox" name="feat"  onChange={() => checkAll()} />
+                                                                                                        }
+                                                                                                        
+                                                                                                        <span>{req.option.lang == 'en' ? 'Check All' : 'Centang Semua' }</span>
+                                                                                                </label>
+                                                                                        </li>
+                                                                                        {data.custom.citem.map((item, index) => {
+                                                                                                return(
+                                                                                                        <li key={index}>
+                                                                                                                <label>
+                                                                                                                        {itemChecked.includes(item.label) 
+                                                                                                                                ? <input type="checkbox" name="feat" checked="checked"  onChange={(e) => updateCheck(e,item.label)} />
+                                                                                                                                : <input type="checkbox" name="feat"  onChange={(e) => updateCheck(e,item.label)} />
+                                                                                                                        }
+                                                                                                                        <span>
+                                                                                                                                {item.label}
+                                                                                                                                {item.info != '' && 
+                                                                                                                                        <i className="cvr-bg"><div className="hvr"><Html2React html={item.info}/></div></i>
+                                                                                                                                }
+                                                                                                                        </span>
+                                                                                                                </label>
+                                                                                                        </li>
+                                                                                                )
+                                                                                        })}
+                                                                                </ul>
+                                                                        }
+                                                                </div>
                                                                 <div className="disclaim">
                                                                         <Html2React html={data.custom.finfo[0]}/>
                                                                         <small>&nbsp;<a href="#" id="popfeat-trigger" onClick={(e) =>{e.preventDefault(); actions.theme.togglePopFeat(); }}>{data.custom.finfoList}</a>
@@ -264,6 +361,21 @@ const Step_2 = ({ state,actions, libraries }) => {
                                                         <section>
                                                                 <div className="annon cvr-bg-bf">
                                                                         <Html2React html={data.custom.info} />
+                                                                </div>
+                                                                <div className="video">
+                                                                        {data.custom.vtext != '' &&
+                                                                                <div className="copy">
+                                                                                        <Html2React html={data.custom.vtext}/>
+                                                                                </div>
+                                                                        }
+                                                                        {data.custom.vthumb != '' &&
+                                                                                <Fancybox>
+                                                                                        <a href="#" data-fancybox data-src={data.custom.vsource == 'upload' ? data.custom.vfile : data.custom.vlink}>
+                                                                                                <Image src={data.custom.vthumb} />
+                                                                                                <span><i className="cvr-bg"></i></span>
+                                                                                        </a>
+                                                                                </Fancybox>
+                                                                        }
                                                                 </div>
                                                         </section>
                                                 </div>
