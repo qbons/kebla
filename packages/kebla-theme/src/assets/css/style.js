@@ -2301,7 +2301,7 @@ body .white-head #top:not(.is-sticky) .logo{
         position: relative;
         width: 11px;
         height: 13px;
-        background-image: url('${Info}');
+        background-image: url('${Info2}');
         cursor: pointer;
 }
 .ihover .wrap{

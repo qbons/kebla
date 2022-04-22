@@ -198,7 +198,11 @@ const Step_1 = ({ state, libraries, actions }) => {
                                                                                                 </CustomScroll>
                                                                                         </div>
                                                                                 </div>
-                                                                                <input type="tel" value={state.theme.hiring.phone.number} onChange={(e) => {state.theme.hiring.phone.number = e.target.value}} placeholder={req.option.lang == 'en' ? 'Phone Number' : 'Nomor telepon'} />
+                                                                                <input type="tel" pattern="[0-9]*" value={state.theme.hiring.phone.number}
+                                                                                onChange={(e) =>
+                                                                                        state.theme.hiring.phone.number = e.target.validity.valid ? e.target.value : state.theme.hiring.phone.number
+                                                                                }
+                                                                                placeholder={req.option.lang == 'en' ? 'Phone Number' : 'Nomor telepon'} />
                                                                         </div>
                                                                 </div>
                                                         </div>
