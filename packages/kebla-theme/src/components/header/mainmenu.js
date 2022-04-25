@@ -53,7 +53,7 @@ const Mainmenu = ({state, actions, libraries}) => {
                                                 )
                                         })}
                                         <li className="lang menu-item-has-children">
-                                                <a href="#" className="cvr-bg"></a>
+                                                <a href="#" className="cvr-bg" onClick={((e) => e.preventDefault())}></a>
                                                 <Toggle/>
                                                 <ul>
                                                         {lang == 'en' 

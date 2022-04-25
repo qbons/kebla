@@ -124,6 +124,21 @@ const Step_1 = ({ state, libraries, actions }) => {
                 state.theme.hiring.needs = oldNeeds;
         }
 
+        const [isValidEmail, setValidEmail] = useState(true);
+        function emailValidation(value){
+                if(value != ''){
+                        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+                        if(regex.test(value) === false || value.includes('yahoo') || value.includes('gmail')){
+                                setValidEmail(false);
+                        }else{
+                                setValidEmail(true);
+                        }
+                }else{
+                        setValidEmail(true);
+                }
+                state.theme.hiring.email = value;
+        }
+
 	return (
                 <>
                         <div className={`step-1 ${isLoading ? 'fetching' : ''}`}>
@@ -167,7 +182,8 @@ const Step_1 = ({ state, libraries, actions }) => {
                                                                 </div>
                                                                 <div className="fgroup">
                                                                         {data.basic.email != '' && <label>{data.basic.email}</label>}
-                                                                        <input type="email" onChange={(e) => {state.theme.hiring.email = e.target.value}} value={state.theme.hiring.email} placeholder="Name@company.com" className={`${emailValid != true ? 'invalid' : ''}`} />
+                                                                        <input type="email" onChange={(e) => {emailValidation(e.target.value)}} value={state.theme.hiring.email} placeholder="Name@company.com" className={`${emailValid != true ? 'invalid' : ''}`} />
+                                                                        {!isValidEmail && <small>{req.option.lang == 'en' ? 'Invalid email address' : 'Alamat email tidak valid'}</small>}
                                                                 </div>
                                                         </div>
                                                         <div className="col">
@@ -283,8 +299,9 @@ const Step_1 = ({ state, libraries, actions }) => {
                                                 {data.form.check != '' &&
                                                         <div className="checks">
                                                                 <label><input type="checkbox" name="agree" onChange={() => setAgree(!agree)}  />
-                                                                        <span>{data.form.check} {(data.form.policy != '' && data.form.policyUrl != '') && <Link link={data.form.policyUrl}>{data.form.policy}</Link>}</span>
+                                                                        <span>{data.form.check}</span>
                                                                 </label>
+                                                                {(data.form.policy != '' && data.form.policyUrl != '') && <Link link={data.form.policyUrl} target="_blank">{data.form.policy}</Link>}
                                                         </div>
                                                 }
                                                 {(agree && data.form.button != '') ? <a href="#" onClick={(e) =>{e.preventDefault();validateData()}} className="button">{data.form.button}</a>

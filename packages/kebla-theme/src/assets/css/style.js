@@ -702,6 +702,7 @@ body .white-head #top:not(.is-sticky) .logo{
 	display: inline-block;
 	vertical-align: middle;
 	filter: brightness(0%);
+	cursor: default;
 }
 .mainmenu li.lang:hover > a.cvr-bg{
 	filter: brightness(100%);
@@ -2007,9 +2008,10 @@ body .white-head #top:not(.is-sticky) .logo{
 .inner-sign .checks label input:checked + span:before{
         background-image: url('${Checked}');
 }
-.inner-sign .checks label span a{
+.inner-sign .checks a{
         color: #0086FF;
         text-decoration: underline;
+	margin-left: 3px;
 }
 .inner-sign .checks label span p{
 	display: inline;
@@ -3159,6 +3161,15 @@ body .white-head #top:not(.is-sticky) .logo{
 	posisiton: relative;
 	margin: 0 5px 0 0;
 }
+.inner-sign .step-1 .panel .fgroup label+*+small{
+	display: block;
+	text-align: right;
+	color: red;
+	font-style: italic;
+	font-size: 12px;
+	width: 100%;
+	margin: 5px 0 0;
+}
 /* MEDIA QUERY FOR WEBKIT BASED BROWSER **/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 
@@ -3289,9 +3300,10 @@ body .white-head #top:not(.is-sticky) .logo{
 		padding: 20px 20px 30px;
 		margin: 0;
 		overflow-y: scroll;
-		max-height: calc(100vh - 53px);
+		max-height: 0;
 	}
 	body.open-menu #top .mainmenu{
+		max-height: calc(100vh - 53px);
 		opacity: 1;
 		visibility: visible;
 	}
@@ -4533,6 +4545,13 @@ body .white-head #top:not(.is-sticky) .logo{
 		flex: 100%;
 		max-width: 100%;
 		padding-bottom: 5px;
+	}
+	.mainmenu li.lang:hover>a.cvr-bg:hover{
+		-webkit-filter: brightness(0%);
+		filter: brightness(0%);
+	}
+	.inner-sign .step-1 .panel .fgroup label+*+small{
+		text-align: left;
 	}
 
 
