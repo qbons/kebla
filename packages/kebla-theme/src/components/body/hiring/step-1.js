@@ -139,6 +139,20 @@ const Step_1 = ({ state, libraries, actions }) => {
                 state.theme.hiring.email = value;
         }
 
+        const [isValidPhone, setValidPhone] = useState(true);
+        function phoneValidation(value){
+                if(value != ''){
+                        if(value.length >= 5 && value.length <=13){
+                                setValidPhone(true);
+                        }else{
+                                setValidPhone(false);
+                        }
+                }else{
+                        setValidPhone(true);
+                }
+                state.theme.hiring.phone.number = value;
+        }
+
 	return (
                 <>
                         <div className={`step-1 ${isLoading ? 'fetching' : ''}`}>
@@ -215,11 +229,15 @@ const Step_1 = ({ state, libraries, actions }) => {
                                                                                         </div>
                                                                                 </div>
                                                                                 <input type="tel" pattern="[0-9]*" value={state.theme.hiring.phone.number}
-                                                                                onChange={(e) =>
-                                                                                        state.theme.hiring.phone.number = e.target.validity.valid ? e.target.value : state.theme.hiring.phone.number
+                                                                                        onChange={(e) => {
+                                                                                                let phone = e.target.validity.valid ? e.target.value : state.theme.hiring.phone.number
+                                                                                                phoneValidation(phone);
+                                                                                                //state.theme.hiring.phone.number = e.target.validity.valid ? e.target.value : state.theme.hiring.phone.number
+                                                                                        }
                                                                                 }
                                                                                 placeholder={req.option.lang == 'en' ? 'Phone Number' : 'Nomor telepon'} />
                                                                         </div>
+                                                                        {!isValidPhone && <small>{req.option.lang == 'en' ? 'Invalid phone number' : 'Nomor telepon tidak valid'}</small>}
                                                                 </div>
                                                         </div>
                                                 </div>
