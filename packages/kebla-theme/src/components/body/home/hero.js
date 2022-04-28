@@ -10,12 +10,14 @@ const Hero = ({ state, libraries,actions }) => {
         const [dropOpen, setDropOpen] = useState(false);
         const [dropText, setDropText] = useState(data.place);
         const [choosed, setChoosed] = useState(false);
+        const [submitted, seSubmitted] = useState(true);
 
         function setDropdownText(text){
                 setDropActivated(true);
                 setChoosed(true);
                 setDropOpen(false);
                 setDropText(text);
+                seSubmitted(true);
         }
 
         useEffect(() => {
@@ -28,6 +30,8 @@ const Hero = ({ state, libraries,actions }) => {
                 if(choosed){
                         state.theme.hiring.employee = dropText;
                         actions.router.set('/employers/hiring')
+                }else{
+                        seSubmitted(false);
                 }
         }
 
@@ -66,6 +70,7 @@ const Hero = ({ state, libraries,actions }) => {
                                                                                 </ul>
                                                                         </div>
                                                                 </div>
+                                                                {!submitted && <small>{req.option.lang == 'en' ? 'please select the number of employees' : 'silahkan pilih jumlah karyawan'}</small>}
                                                                 <button type="button" className="button" onClick={goToHiring}>{data.button}</button>
                                                         </form>
                                                 </div>

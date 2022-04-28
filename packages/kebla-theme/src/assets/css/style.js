@@ -3161,6 +3161,7 @@ body .white-head #top:not(.is-sticky) .logo{
 	posisiton: relative;
 	margin: 0 5px 0 0;
 }
+.inner-home .hero .layer .form-basic small,
 .inner-sign .step-1 .panel .fgroup label+*+small{
 	display: block;
 	text-align: right;
@@ -3169,6 +3170,10 @@ body .white-head #top:not(.is-sticky) .logo{
 	font-size: 12px;
 	width: 100%;
 	margin: 5px 0 0;
+}
+.inner-home .hero .layer .form-basic small{
+	text-align: left;
+	margin: 10px 0 0;
 }
 /* MEDIA QUERY FOR WEBKIT BASED BROWSER **/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
