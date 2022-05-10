@@ -24,6 +24,7 @@ const HeadMeta = ({state, libraries}) => {
                         {meta.og_image_width != '' && <meta property="og:image:width" content={meta.og_image_width} />}
                         {meta.og_image_height != '' && <meta property="og:image:height" content={meta.og_image_height} /> }
                         {meta.twitter_card != '' && <meta name="twitter:card" content={meta.twitter_card} />}
+                        {meta.fb_verif != '' && <meta name="facebook-domain-verification" content={meta.fb_verif} />}
                 </Head>       
         )
 }
