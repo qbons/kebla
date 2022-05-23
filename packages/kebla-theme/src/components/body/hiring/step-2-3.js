@@ -23,6 +23,7 @@ const Step_2_3 = ({ state,actions, libraries }) => {
 
 	return (
 		<div className="step-3">
+                        <img height="1" width="1" style={{display: 'none'}}  src="https://px.ads.linkedin.com/collect/?pid=4161169&conversionId=8624393&fmt=gif" />
                         <div className="timeline">
                                 {timeline.step1 != '' &&
                                         <span className="current and-half">
